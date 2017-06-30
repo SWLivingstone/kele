@@ -23,4 +23,9 @@ class Kele
     options = {"email" => @email, "password" => @password}
     self.class.post('/sessions', :body => options)
   end
+
+  def get_me
+    response = self.class.get('/users/me', headers: { "authorization" => @auth_token })
+    JSON.parse(response.body, symbolize_names: true)
+  end
 end

@@ -24,8 +24,7 @@ class Kele
     self.class.post('/sessions', :body => options)
   end
 
-  def get_mentor_availability
-    mentor_id = self.get_me[:current_enrollment][:mentor_id]
+  def get_mentor_availability(mentor_id)
     response = self.class.get("/mentors/#{mentor_id}/student_availability", headers: { "authorization" => @auth_token })
     JSON.parse(response.body)
   end

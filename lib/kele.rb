@@ -1,10 +1,12 @@
 gem 'httparty', '~> 0.13'
 require 'httparty'
 require_relative 'roadmap'
+require_relative 'checkpoints'
 
 class Kele
   include HTTParty
   include RoadMap
+  include Checkpoints
   base_uri 'https://www.bloc.io/api/v1'
 
   attr_reader :email, :password
